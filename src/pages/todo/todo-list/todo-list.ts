@@ -1,26 +1,32 @@
 import { Component } from "@angular/core";
 import { NavController, AlertController, List } from 'ionic-angular';
-import { TodosProvider } from '../../providers/todos/todos';
+import { TodosProvider } from '../../../providers/todos/todos';
 import { TodoDetailPage } from "../todo-detail/todo-detail";
  
 @Component({
-  selector: 'page-todo',
-  templateUrl: 'todo.html',
+  selector: 'page-todo-list',
+  templateUrl: 'todo-list.html',
 })
-export class TodoPage {
+export class TodoListPage {
  
   todos: List;
+  pronto: boolean;
  
   constructor(public navCtrl: NavController, 
               public todoService: TodosProvider, 
               public alertCtrl: AlertController) {
- 
+    
+    this.pronto = false;
   }
  
   ionViewDidLoad(){
  
     this.todoService.getTodos().then((data) => {
       this.todos = data;
+      
+      setTimeout(() => {
+        this.pronto = true;  
+      }, 1000);
     });
  
   }

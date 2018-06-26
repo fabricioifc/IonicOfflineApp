@@ -11,11 +11,11 @@
 </ion-header>
 
 <ion-content>
- 
-  <ion-list no-lines> 
-    <ion-item text-center middle *ngIf='todos?.length === 0'>Sem Resultados</ion-item>
+  <ion-spinner *ngIf="!pronto"></ion-spinner>
+  <ion-list no-lines *ngIf="pronto">
+    <ion-item text-center margin-top *ngIf='todos?.length === 0'>Sem Resultados</ion-item>
 
-    <ion-item-sliding *ngFor="let todo of todos">
+    <ion-item-sliding *ngFor="let todo of todos" >
 
       <ion-item>{{todo.title}}</ion-item>
 

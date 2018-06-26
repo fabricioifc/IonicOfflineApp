@@ -1,0 +1,47 @@
+.ios, .md {
+ 
+    page-todo-list {
+   
+      .scroll-content {
+        background-color: #ecf0f1;
+        display: flex;
+        justify-content: center;
+      }
+   
+      ion-list {
+        width: 97%;
+    }
+   
+      ion-item-sliding {
+        margin-top: 10px;
+        border-radius: 4px;
+      }
+   
+      ion-item {
+        border: none;
+        font-weight: bold;
+      }
+
+      ion-spinner {
+        display: block;
+        margin: auto;
+      }
+
+      ion-spinner * {
+        stroke: color($colors, primary);
+        fill: color($colors, dark);
+        position: fixed;
+        z-index: 999;
+        height: 3em;
+        width: em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+   
+    }
+   
+  }

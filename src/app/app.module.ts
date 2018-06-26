@@ -27,8 +27,8 @@ import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
 import {TripsPage} from "../pages/trips/trips";
 import {LocalWeatherPage} from "../pages/local-weather/local-weather";
-import { TodoPage } from '../pages/todo/todo';
-import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
+import { TodoListPage } from '../pages/todo/todo-list/todo-list';
+import { TodoDetailPage } from '../pages/todo/todo-detail/todo-detail';
 
 // import services
 // end import services
@@ -50,7 +50,7 @@ import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
     SearchLocationPage,
     TripDetailPage,
     TripsPage,
-    TodoPage,
+    TodoListPage,
     TodoDetailPage,
   ],
   imports: [
@@ -79,7 +79,7 @@ import { TodoDetailPage } from '../pages/todo-detail/todo-detail';
     SearchLocationPage,
     TripDetailPage,
     TripsPage,
-    TodoPage,
+    TodoListPage,
     TodoDetailPage,
   ],
   providers: [
