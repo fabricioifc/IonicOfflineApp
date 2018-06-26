@@ -67,11 +67,11 @@ export class TodosProvider {
   }
 
   createTodo(todo){
-    this.auth.getLocal().post(todo);
+    return this.auth.getLocal().post(todo);
   }
    
   updateTodo(todo){
-    this.auth.getLocal().put(todo).
+    return this.auth.getLocal().put(todo).
     then((result) => {
       this.toastCtrl.create('Atualizado com Sucesso');
     })
@@ -88,6 +88,10 @@ export class TodosProvider {
       console.log(error);
       this.toastCtrl.create(error.message, false, 3000, 'toast-error');
     }); 
+  }
+
+  exists(_id): any {
+    return this.auth.getLocal().get(_id);
   }
 
 }

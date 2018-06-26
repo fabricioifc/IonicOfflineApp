@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavController, AlertController, List } from 'ionic-angular';
 import { TodosProvider } from '../../../providers/todos/todos';
 import { TodoDetailPage } from "../todo-detail/todo-detail";
+import { TodoFormPage } from "../todo-form/todo-form";
  
 @Component({
   selector: 'page-todo-list',
@@ -24,68 +25,68 @@ export class TodoListPage {
     this.todoService.getTodos().then((data) => {
       this.todos = data;
       
-      setTimeout(() => {
-        this.pronto = true;  
-      }, 1000);
+      this.pronto = true;  
     });
  
   }
  
   createTodo(){
+    this.navCtrl.push(TodoFormPage, {});
  
-    let prompt = this.alertCtrl.create({
-      title: 'Add',
-      message: 'What do you need to do?',
-      inputs: [
-        {
-          name: 'title'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.todoService.createTodo({title: data.title});
-          }
-        }
-      ]
-    });
+    // let prompt = this.alertCtrl.create({
+    //   title: 'Add',
+    //   message: 'What do you need to do?',
+    //   inputs: [
+    //     {
+    //       name: 'title'
+    //     }
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Cancel'
+    //     },
+    //     {
+    //       text: 'Save',
+    //       handler: data => {
+    //         this.todoService.createTodo({title: data.title});
+    //       }
+    //     }
+    //   ]
+    // });
  
-    prompt.present();
+    // prompt.present();
  
   }
  
   updateTodo(todo){
+    this.navCtrl.push(TodoFormPage, {todo:todo});
  
-    let prompt = this.alertCtrl.create({
-      title: 'Editar',
-      message: 'Change your mind?',
-      inputs: [
-        {
-          name: 'title', value: todo.title
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar'
-        },
-        {
-          text: 'Salvar',
-          handler: data => {
-            this.todoService.updateTodo({
-              _id: todo._id,
-              _rev: todo._rev,
-              title: data.title
-            });
-          }
-        }
-      ]
-    });
+    // let prompt = this.alertCtrl.create({
+    //   title: 'Editar',
+    //   message: 'Change your mind?',
+    //   inputs: [
+    //     {
+    //       name: 'title', value: todo.title
+    //     }
+    //   ],
+    //   buttons: [
+    //     {
+    //       text: 'Cancelar'
+    //     },
+    //     {
+    //       text: 'Salvar',
+    //       handler: data => {
+    //         this.todoService.updateTodo({
+    //           _id: todo._id,
+    //           _rev: todo._rev,
+    //           title: data.title
+    //         });
+    //       }
+    //     }
+    //   ]
+    // });
  
-    prompt.present();
+    // prompt.present();
   }
  
   deleteTodo(todo){

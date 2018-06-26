@@ -29,6 +29,7 @@ import {TripsPage} from "../pages/trips/trips";
 import {LocalWeatherPage} from "../pages/local-weather/local-weather";
 import { TodoListPage } from '../pages/todo/todo-list/todo-list';
 import { TodoDetailPage } from '../pages/todo/todo-detail/todo-detail';
+import { TodoFormPage } from '../pages/todo/todo-form/todo-form';
 
 // import services
 // end import services
@@ -52,6 +53,7 @@ import { TodoDetailPage } from '../pages/todo/todo-detail/todo-detail';
     TripsPage,
     TodoListPage,
     TodoDetailPage,
+    TodoFormPage,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { TodoDetailPage } from '../pages/todo/todo-detail/todo-detail';
     TripsPage,
     TodoListPage,
     TodoDetailPage,
+    TodoFormPage
   ],
   providers: [
     StatusBar,

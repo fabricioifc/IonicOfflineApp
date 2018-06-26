@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-/**
- * Generated class for the TodoFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TodosProvider } from "../../../providers/todos/todos";
+import { TodoListPage } from '../todo-list/todo-list';
 
 @IonicPage()
 @Component({
@@ -15,11 +12,59 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TodoFormPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  form: FormGroup;
+  todo: any;
+
+  constructor(public navCtrl: NavController, 
+          public navParams: NavParams,
+          private formBuilder: FormBuilder,
+          private todoService: TodosProvider) {
+
+    this.todo = navParams.get('todo');
+
+    this.form = this.formBuilder.group({
+      title: [this.todo ? this.todo.title : '', Validators.compose([
+        Validators.required, 
+        // Validators.pattern('[a-zA-Z]*'), 
+        Validators.minLength(1), 
+        Validators.maxLength(140)])
+      ]
+
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TodoFormPage');
+  }
+
+  onSubmit(value: any): void { 
+    console.log('Salvando...');
+
+    if (this.form.valid) {
+      console.log(value);
+      if (this.todo) {
+
+        this.todoService.updateTodo({
+          _id: this.todo._id,
+          _rev: this.todo._rev,
+          title: value.title
+        }).then((result) => {
+          this.navCtrl.setRoot(TodoListPage);
+        }).catch(function(error) {
+          console.log(error);
+        });
+        
+      } else {
+      
+        this.todoService.createTodo({title: value.title}).then((result) => {
+          this.navCtrl.setRoot(TodoListPage);
+        }).catch(function(error) {
+          console.log(error);
+        });
+      }
+
+    }
+    
   }
 
 }
